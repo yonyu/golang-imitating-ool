@@ -8,12 +8,12 @@ import (
 
 // Dog struct allows you to store data and provide methods on that data
 type Dog struct {
-	Animal
 	Name  string
 	Color string
 	Breed string
 	//Age       int
 	lastSlept time.Time // not accessible outside the package
+	Animal
 }
 
 func (d Dog) needSleep() bool { // inaccessible outside the package
@@ -41,7 +41,7 @@ func (d Dog) GiveAttention(activity string) string {
 	return fmt.Sprintf("%s loves attention, %s will cause him to %s", d.Name, activity, response)
 }
 
-func NewDog(name, color, breed string, lastSlept time.Time) Dog {
+func NewDog(name, color, breed string, lastSlept time.Time) Pet {
 	return Dog{
 		Name:      name,
 		Color:     color,
