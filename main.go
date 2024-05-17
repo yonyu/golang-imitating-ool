@@ -3,17 +3,22 @@ package main
 
 import (
 	"fmt"
-	"time"
-
 	"golang-imitating-ool/pets"
+	"time"
 )
 
 func main() {
-	//sleepTime := time.Now()
-	sleepTime := time.Now().Add(time.Duration(-5) * time.Hour)
+	sleepTime := time.Now()
+	//sleepTime := time.Now().Add(time.Duration(-5) * time.Hour)
 	pet := pets.NewDog("Oreo", "Black and white", "Labrador", sleepTime)
 
-	fmt.Println(pet.Feed("steak"))
+	if pet.IsHungry() {
+		fmt.Println(pet.Feed("kibble"))
+	} else {
+		fmt.Println("Pet is not hungry, waiting")
+		time.Sleep(2 * time.Second)
+		fmt.Println(pet.Feed("kibble"))
+	}
 	fmt.Println(pet.GiveAttention("play fetch"))
 }
 
